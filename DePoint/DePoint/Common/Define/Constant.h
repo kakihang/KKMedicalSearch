@@ -20,6 +20,8 @@
 // tabBar字体大小
 #define KKTabBarTextFont [UIFont systemFontOfSize:10]
 
+
+
 // 三原色和透明度 颜色宏
 #define KKCOLOR(kred, kgreen, kblue, kalpha) [UIColor colorWithRed:kred/255.0 green:kgreen/255.0 blue:kblue/255.0 alpha:kalpha]
 // 图片设置宏
@@ -50,17 +52,17 @@
 
 /** apiKey **/
 
-#define KKGDMAPAPIKEY @"19d7dfa2a4734ca4f150e15db60d3dd3"
-#define KKUMAPIKEY @"579dfeb7e0f55a2aa7000b56"
-#define KKBMOBAPIKEY @"9e266ba3adf895e8b4c40bacb3d461ec"
-#define KKSHAREAPIKEY @"155157a41f54c"
-#define KKQQAPIID @"100371282"
-#define KKQQAPIKEY @"aed9b0303e3ed1e27bae87c33761161d"
-#define KKTENAPIKEY @"1105597156"
-#define KKWXAPIID @"wx80106443bd33626d"
-#define KKWXAPIKEY @"edaaa1793dfc4d8ff6c5561ae09ddd3f"
-#define KKSMSAPIKEY @"160fc2f6a7408"
-#define KKSMSSCREKEY @"6398e49132e167b0cdc96f22c7a2a4e9"
+#define KKGDMAPAPIKEY @"19d7dfa2a4734ca4f150e15db60d3dd3" //高德
+#define KKUMAPIKEY @"579dfeb7e0f55a2aa7000b56"            //友盟
+#define KKBMOBAPIKEY @"9e266ba3adf895e8b4c40bacb3d461ec"  //bmob
+#define KKSHAREAPIKEY @"155157a41f54c"                    //mob shareSDK
+#define KKQQAPIID @"100371282"                            //QQ
+#define KKQQAPIKEY @"aed9b0303e3ed1e27bae87c33761161d"    //QQ
+#define KKTENAPIKEY @"1105597156"                         //QQ
+#define KKWXAPIID @"wx80106443bd33626d"                   //微信
+#define KKWXAPIKEY @"edaaa1793dfc4d8ff6c5561ae09ddd3f"    //微信
+#define KKSMSAPIKEY @"160fc2f6a7408"                      //mob短信
+#define KKSMSSCREKEY @"6398e49132e167b0cdc96f22c7a2a4e9"  //mob短信
 
 // 评分地址
 #define KKAPPLESTOREADDRESS @"/wei-xin/id414478124"
