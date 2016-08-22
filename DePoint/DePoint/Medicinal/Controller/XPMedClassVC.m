@@ -6,6 +6,9 @@
 //  Copyright © 2016年 liudhkk. All rights reserved.
 //
 
+
+#define KKBottomViewCoverColor KKCOLOR(0, 104, 89, 1)
+
 #import "XPMedClassVC.h"
 #import "XPListViewCell.h"
 #import "XPSearchController.h"
@@ -28,6 +31,7 @@
 
 @implementation XPMedClassVC{
     BOOL _menuHiddex;
+    BOOL _menuAnimationFlag;
     CGFloat _height;
     CGFloat _maxHeight;
     CGFloat _trueHeight;
@@ -38,15 +42,17 @@ static NSString *rightCell = @"rightCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"发现";
     __weak typeof(self) weakSelf = self;
     [XPFactory addSearchItemForVC:self clickedHandler:^{
         XPSearchController *vc =[[XPSearchController alloc]init];
         vc.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:vc animated:YES];
     }];
+    _menuAnimationFlag = NO;
     _menuHiddex = YES;
-    _height = 30;
-    _maxHeight = 300;
+    _height = 40;
+    _maxHeight = KKScreenHeightPrecent(0.6);
     _trueHeight = _height * self.plistData.count;
     if(_trueHeight > _maxHeight){
         _trueHeight = _maxHeight;
@@ -80,8 +86,11 @@ static NSString *rightCell = @"rightCell";
     
 }
 -(void)clickMainButton{
+    if (_menuAnimationFlag) {
+        return;
+    }
+    _menuAnimationFlag = YES;
     [self.bgView.superview layoutIfNeeded];
-    self.bottomView.alpha = 0.4;
     self.leftBt.enabled = NO;
     self.rightBt.enabled = NO;
     __weak typeof(self) weakSelf = self;
@@ -89,24 +98,28 @@ static NSString *rightCell = @"rightCell";
         if (weakSelf.bgView.height == 0) {
             [weakSelf.bgView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(weakSelf.leftBt.mas_bottom);
-                make.left.right.bottom.mas_equalTo(0);
-                [UIView animateWithDuration:0.5 animations:^{
-                    weakSelf.bottomView.alpha =1.0;
-                }];
+                make.left.right.mas_equalTo(0);
+                make.height.mas_equalTo(_trueHeight);
             }];
+            weakSelf.bottomView.alpha = 0.3;
+            weakSelf.bottomView.hidden = NO;
         } else {
             [weakSelf.bgView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.right.mas_equalTo(0);
                 make.top.mas_equalTo(weakSelf.leftBt.mas_bottom);
                 make.height.mas_equalTo(0);
             }];
+            weakSelf.bottomView.alpha = 0;
         }
         [weakSelf.bgView.superview layoutIfNeeded];//强制绘制
     } completion:^(BOOL finished) {
         weakSelf.leftBt.enabled = YES;
         weakSelf.rightBt.enabled = YES;
+        _menuAnimationFlag = NO;
+        weakSelf.bottomView.hidden = weakSelf.bgView.height == 0;
     }];
 }
+
 #pragma make -
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(tableView ==self.leftView){
@@ -121,12 +134,12 @@ static NSString *rightCell = @"rightCell";
     if(tableView ==self.leftView){
         UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:leftCell forIndexPath:indexPath];
         cell.textLabel.text = _plistData[indexPath.row][@"name"];
-        cell.textLabel.font = [UIFont systemFontOfSize:18];
+        cell.textLabel.font = KKGlobalTitleTextFont;
         return cell;
     }else if(tableView ==self.rightView){
         UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:rightCell forIndexPath:indexPath];
         cell.textLabel.text = _plistData[_cIndex][@"idList"][indexPath.row][@"name"];
-        cell.textLabel.font = [UIFont systemFontOfSize:18];
+        cell.textLabel.font = KKGlobalTitleTextFont;
         cell.backgroundColor = KKCOLOR(217, 217, 217, 1);
         return cell;
     }else{
@@ -157,6 +170,7 @@ static NSString *rightCell = @"rightCell";
 - (UIButton *)leftBt {
     if(_leftBt == nil) {
         _leftBt = [[UIButton alloc] init];
+        _leftBt.titleLabel.font = KKGlobalTitleTextFont;
         [_leftBt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_leftBt addTarget:self action:@selector(clickMainButton) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_leftBt];
@@ -172,6 +186,7 @@ static NSString *rightCell = @"rightCell";
 - (UIButton *)rightBt {
     if(_rightBt == nil) {
         _rightBt = [[UIButton alloc] init];
+        _rightBt.titleLabel.font = KKGlobalTitleTextFont;
         [_rightBt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_rightBt addTarget:self action:@selector(clickMainButton) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_rightBt];
@@ -191,11 +206,10 @@ static NSString *rightCell = @"rightCell";
         _leftView = [[UITableView alloc] init];
         _leftView.dataSource = self;
         _leftView.delegate = self;
+        _leftView.rowHeight = _height;
         [self.bgView addSubview:_leftView];
-        __weak typeof(self) weakSelf = self;
         [_leftView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(0);
-            make.bottom.mas_equalTo(weakSelf.bottomView.mas_top);
+            make.left.top.bottom.mas_equalTo(0);
         }];
     }
     return _leftView;
@@ -205,6 +219,7 @@ static NSString *rightCell = @"rightCell";
         _rightView = [[UITableView alloc] init];
         _rightView.dataSource = self;
         _rightView.delegate = self;
+        _rightView.rowHeight = _height;
         _rightView.backgroundColor = KKCOLOR(217, 217, 217, 1);
         [self.bgView addSubview:_rightView];
         __weak typeof(self) weakSelf = self;
@@ -219,34 +234,35 @@ static NSString *rightCell = @"rightCell";
 }
 - (UIView *)bgView {
     if(_bgView == nil) {
-        _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = [UIColor colorWithWhite:0.4 alpha:0.8];
-        [self.view addSubview:_bgView];
+        
         __weak typeof(self) weakSelf = self;
-        [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {            make.centerX.equalTo(0);
-            make.top.mas_equalTo(weakSelf.leftBt.mas_bottom);
-            make.height.equalTo(0);
-        }];
         UIView *bottomView = [[UIView alloc] init];
-        bottomView.backgroundColor = KKCOLOR(0, 104, 89, 0.4);
-        [_bgView addSubview:bottomView];
+        bottomView.backgroundColor = KKBottomViewCoverColor;
+        bottomView.alpha = 0;
+        [self.view addSubview:bottomView];
         [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(0);
-            make.height.mas_equalTo(_bgView).multipliedBy(0.4);
+            make.top.mas_equalTo(weakSelf.leftBt.mas_bottom);
         }];
-        bottomView.userInteractionEnabled = YES;
         [bottomView bk_whenTapped:^{
             [weakSelf clickMainButton];
         }];
-        
         UISwipeGestureRecognizer *gr = [[UISwipeGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
-            bottomView.userInteractionEnabled = NO;
             [weakSelf clickMainButton];
-            bottomView.userInteractionEnabled = YES;
         }];
         [bottomView addGestureRecognizer:gr];
         gr.direction = UISwipeGestureRecognizerDirectionUp;
         self.bottomView = bottomView;
+        
+        _bgView = [[UIView alloc] init];
+        _bgView.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:_bgView];
+        [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(0);
+            make.top.mas_equalTo(weakSelf.leftBt.mas_bottom);
+            make.left.right.height.equalTo(0);
+        }];
+        
     }
     return _bgView;
 }

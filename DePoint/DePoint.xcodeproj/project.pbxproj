@@ -774,12 +774,12 @@
 			children = (
 				269EFE561D6499BB0011E89B /* XPMediController.h */,
 				269EFE581D6499BB0011E89B /* XPMediController.m */,
+				269EFE591D6499BB0011E89B /* XPMedClassVC.h */,
+				269EFE551D6499BB0011E89B /* XPMedClassVC.m */,
 				269EFE5C1D6499BB0011E89B /* XPDetailController.h */,
 				269EFE531D6499BB0011E89B /* XPDetailController.m */,
 				269EFE571D6499BB0011E89B /* XPSearchController.h */,
 				269EFE5A1D6499BB0011E89B /* XPSearchController.m */,
-				269EFE591D6499BB0011E89B /* XPMedClassVC.h */,
-				269EFE551D6499BB0011E89B /* XPMedClassVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
