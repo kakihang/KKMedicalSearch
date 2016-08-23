@@ -9,10 +9,16 @@
 #import "ScanModel.h"
 
 @implementation ScanModel
-
++ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass
+{
+    return @{@"info": [ScanModel class]};
+}
 @end
 
 @implementation Info
++ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper{
+    return @{@"ID": @"id"};
+}
 
 @end
 

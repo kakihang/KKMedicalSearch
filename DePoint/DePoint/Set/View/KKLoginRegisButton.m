@@ -22,9 +22,9 @@
     [super setEnabled:enabled];
     
     if (enabled) {
-        [self setBackgroundColor:KKCOLOR(255, 213, 0, 0.9)];
+        [self setBackgroundColor:KKButtonNormalColor];
     } else {
-        [self setBackgroundColor:KKCOLOR(249, 213, 111, 0.8)];
+        [self setBackgroundColor:KKButtonDisableColor];
     }
 }
 

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 liudhkk. All rights reserved.
 //
 
-#import "KKCustomVC.h"
 
-@interface KKRegisterViewC : KKCustomVC
+
+@interface KKRegisterViewC : UIViewController
 - (instancetype)initWitTitle:(NSString *)title isRegister:(BOOL)isRegister;
 - (instancetype)init;
 @end

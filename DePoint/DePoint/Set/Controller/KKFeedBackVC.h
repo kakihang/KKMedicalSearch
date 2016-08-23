@@ -6,8 +6,7 @@
 //  Copyright © 2016年 liudhkk. All rights reserved.
 //
 
-#import "KKCustomVC.h"
 
-@interface KKFeedBackVC : KKCustomVC
+@interface KKFeedBackVC : UIViewController
 
 @end

@@ -12,8 +12,10 @@
 
 + (instancetype)cellWithIdentifier:(NSString *)identifier {
     KKSetTViewCell *cell = [[KKSetTViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    [cell  iconView];
+    [cell  titleLa];
+    [cell  assistLa];
     return cell;
 }
 

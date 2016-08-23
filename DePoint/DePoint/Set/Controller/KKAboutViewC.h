@@ -8,8 +8,6 @@
 
 
 
-#import "KKCustomVC.h"
-
-@interface KKAboutViewC : KKCustomVC
+@interface KKAboutViewC : UIViewController
 
 @end

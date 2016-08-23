@@ -6,9 +6,6 @@
 //  Copyright © 2016年 liudhkk. All rights reserved.
 //
 
-#import "KKCustomVC.h"
-
-
-@interface KKChangePassVC : KKCustomVC
+@interface KKChangePassVC : UIViewController
 
 @end

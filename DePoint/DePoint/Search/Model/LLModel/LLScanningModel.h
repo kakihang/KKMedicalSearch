@@ -11,11 +11,11 @@
 @class Esarray;
 @interface LLScanningModel : NSObject
 
-@property (nonatomic, strong) NSArray<Esarray *> *esArray;
-
-@end
-
-@interface Esarray : NSObject
+//@property (nonatomic, strong) NSArray<Esarray *> *esArray;
+//
+//@end
+//
+//@interface Esarray : NSObject
 //id->ID
 @property (nonatomic, copy) NSString *ID;
 

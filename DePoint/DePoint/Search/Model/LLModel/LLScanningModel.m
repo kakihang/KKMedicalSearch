@@ -9,15 +9,13 @@
 #import "LLScanningModel.h"
 
 @implementation LLScanningModel
-+ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass
-{
-    return @{@"esArray": [LLScanningModel class]};
-}
-//+ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper{
-//    return @{@"ID": @"id"};
+//+ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass
+//{
+//    return @{@"esArray": [LLScanningModel class]};
 //}
-@end
-@implementation Esarray
+
+//@end
+//@implementation Esarray
 + (NSDictionary<NSString *,id> *)modelCustomPropertyMapper{
     return @{@"ID": @"id"};
 }

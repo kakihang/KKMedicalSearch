@@ -11,10 +11,8 @@
 @interface KKAnno : NSObject<MKAnnotation>
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
-
 @property (nonatomic, copy, nullable) NSString *title;
 @property (nonatomic, copy, nullable) NSString *subtitle;
-
 @property (nonatomic, assign) NSInteger     distance;
-
+@property (nonatomic, copy, nullable) NSString *icon; // 暂不使用
 @end

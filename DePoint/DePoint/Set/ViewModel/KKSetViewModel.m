@@ -11,6 +11,8 @@
 #import "KKCustomVC.h"
 #import "KKMedicineChestVC.h"
 #import "KKLoginProc.h"
+#import "KKLoginInfoVC.h"
+#import "KKLoginViewC.h"
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
@@ -75,28 +77,25 @@
     if(_dataList == nil) {
         __weak typeof(self) weakSelf = self;
         _dataList =
-        @[@[@{@"icon":@"set_icon",  //0-0
-              @"title":@"药箱",
-              @"block":^(UIViewController *obj){
-                  if (![KKLoginProc kk_getCurrentUser]) {
-                      [obj.view kk_showAlertNoTitleWithMessage:@"请先进行登录"];
-                  } else {
-                      [weakSelf pushViewContr:[[KKMedicineChestVC alloc] init] from:obj];
-                  }
-              }
-              }/*,
-                @{@"icon":@"set_icon",  //0-1
-                @"title":@"收藏"}*/],
+        @[@[@{@"block":^(UIViewController *obj){
+            obj.hidesBottomBarWhenPushed = YES;
+            [KKLoginProc kk_getCurrentUser].length>0?[obj.navigationController pushViewController:[[KKLoginInfoVC alloc] init] animated:YES]:[obj.navigationController pushViewController:[[KKLoginViewC alloc] init] animated:YES];
+            obj.hidesBottomBarWhenPushed = NO;
+        }
+              }],
+          //          @[@{@"icon":@"set_icon",  //0-0
+          //              @"title":@"药箱",
+          //              @"block":^(UIViewController *obj){
+          //                  if (![KKLoginProc kk_getCurrentUser]) {
+          //                      [obj.view kk_showAlertNoTitleWithMessage:@"请先进行登录"];
+          //                  } else {
+          //                      [weakSelf pushViewContr:[[KKMedicineChestVC alloc] init] from:obj];
+          //                  }
+          //              }
+          //              }/*,
+          //                @{@"icon":@"set_icon",  //0-1
+          //                @"title":@"收藏"}*/],
           
-          @[@{@"icon":@"set_icon",  //1-0
-              @"title":@"清除缓存",
-              @"assist":^(void){
-                  return [weakSelf getCacheRoom];
-              },
-              @"block":^(UITableViewController *obj){
-                  [weakSelf deleteCache:obj];
-                  [obj.tableView reloadData];
-              }}],
           
           @[@{@"icon":@"set_icon",  //2-1
               @"title":@"推荐给朋友",
@@ -110,6 +109,16 @@
               @"title":@"意见反馈",
               @"block":^(id obj){
                   [weakSelf pushViewContr:[[KKFeedBackVC alloc] init] from:obj];
+              }}],
+          
+          @[@{@"icon":@"set_icon",  //1-0
+              @"title":@"清除缓存",
+              @"assist":^(void){
+                  return [weakSelf getCacheRoom];
+              },
+              @"block":^(UITableViewController *obj){
+                  [weakSelf deleteCache:obj];
+                  [obj.tableView reloadData];
               }}],
           
           @[@{@"icon":@"set_icon",  //3-1
@@ -179,10 +188,10 @@
     
     if (imageArray) {
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"分享内容"
+        [shareParams SSDKSetupShareParamsByText:@"我正在使用【MedicalSearch】，推荐给您"
                                          images:imageArray
                                             url:[NSURL URLWithString:[NSString stringWithFormat:@"itunes.apple.com/cn/app%@", KKAPPLESTOREADDRESS]]
-                                          title:@"分享标题"
+                                          title:@"分享【MedicalSearch】应用链接"
                                            type:SSDKContentTypeAuto];
         //2、分享（可以弹出我们的分享菜单和编辑界面）
         [ShareSDK showShareActionSheet:nil

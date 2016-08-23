@@ -12,8 +12,8 @@
 - (UIImageView *)iconIV {
     if(_iconIV == nil) {
         _iconIV = [[UIImageView alloc] init];
-        //        _iconIV.contentMode = UIViewContentModeScaleAspectFill;
-        //        _iconIV.clipsToBounds = YES;
+        _iconIV.contentMode = UIViewContentModeScaleAspectFill;
+        _iconIV.clipsToBounds = YES;
         [self.contentView addSubview:_iconIV];
         [_iconIV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(-10);

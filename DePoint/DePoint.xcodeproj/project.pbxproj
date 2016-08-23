@@ -27,8 +27,6 @@
 		267DF2E31D648B74005D2639 /* LLNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DF2C91D648B74005D2639 /* LLNetManager.m */; };
 		267DF2E41D648B74005D2639 /* LLScanningModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DF2CD1D648B74005D2639 /* LLScanningModel.m */; };
 		267DF2E51D648B74005D2639 /* ScanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DF2CF1D648B74005D2639 /* ScanModel.m */; };
-		267DF2E61D648B74005D2639 /* ScanningModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DF2D11D648B74005D2639 /* ScanningModel.m */; };
-		267DF2E71D648B74005D2639 /* LLFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DF2D61D648B74005D2639 /* LLFlowCell.m */; };
 		267DF2E81D648B74005D2639 /* LLIntroBelowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DF2D81D648B74005D2639 /* LLIntroBelowCell.m */; };
 		267DF2E91D648B74005D2639 /* LLIntroCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DF2DA1D648B74005D2639 /* LLIntroCell.m */; };
 		267DF2EC1D648BEE005D2639 /* KKSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 267DF2EB1D648BEE005D2639 /* KKSearchVC.m */; };
@@ -70,10 +68,15 @@
 		26AD7A0F1D4A447D009217B5 /* CLLocationManager+KKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AD7A0D1D4A447D009217B5 /* CLLocationManager+KKModel.m */; };
 		26AD7A121D4A44B6009217B5 /* KKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AD7A111D4A44B6009217B5 /* KKMapView.m */; };
 		26AE8F491D48D5C300E5E763 /* KKLocationVModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AE8F481D48D5C300E5E763 /* KKLocationVModel.m */; };
+		26B5E40E1D6BFE11001DACAB /* KKSearchMsgTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B5E40D1D6BFE11001DACAB /* KKSearchMsgTVCell.m */; };
 		26B9D42B1D5E27D100BBEBE0 /* KKLoginRegisButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B9D42A1D5E27D100BBEBE0 /* KKLoginRegisButton.m */; };
 		26B9D42E1D5E9D1F00BBEBE0 /* KKCheckUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B9D42D1D5E9D1F00BBEBE0 /* KKCheckUtil.m */; };
 		26B9D4511D6014D800BBEBE0 /* KKSmsProc.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B9D4501D6014D800BBEBE0 /* KKSmsProc.m */; };
 		26B9D4541D60A5F900BBEBE0 /* KKLoginProc.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B9D4531D60A5F900BBEBE0 /* KKLoginProc.m */; };
+		26D244591D6B1C2E0028BB22 /* KKSetLoginTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D244581D6B1C2E0028BB22 /* KKSetLoginTVCell.m */; };
+		26D2445C1D6B4BC20028BB22 /* KKFrameNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D2445B1D6B4BC20028BB22 /* KKFrameNavController.m */; };
+		26D244611D6BE2810028BB22 /* KKSearchInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D2445E1D6BE2810028BB22 /* KKSearchInfoView.m */; };
+		26D244621D6BE2810028BB22 /* KKSearchFlowDirectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D244601D6BE2810028BB22 /* KKSearchFlowDirectionView.m */; };
 		26D695AF1D5CBF290010A025 /* KKRegisterViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D695AE1D5CBF290010A025 /* KKRegisterViewC.m */; };
 		26D695B21D5CC61B0010A025 /* KKRegisterShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D695B11D5CC61B0010A025 /* KKRegisterShowView.m */; };
 		26D6BD4D1D4244AB00CFBB01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D6BD4C1D4244AB00CFBB01 /* AppDelegate.m */; };
@@ -148,8 +151,8 @@
 		265E87FD1D669FC20087E173 /* KKUserFileProc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUserFileProc.m; sourceTree = "<group>"; };
 		265E87FF1D66A9A50087E173 /* fei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fei.png; sourceTree = "<group>"; };
 		2660E02D1D5859F900C651FF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		267DF2BD1D648B74005D2639 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRSwizzle.h; path = LLController/JRSwizzle.h; sourceTree = "<group>"; };
-		267DF2BE1D648B74005D2639 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRSwizzle.m; path = LLController/JRSwizzle.m; sourceTree = "<group>"; };
+		267DF2BD1D648B74005D2639 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRSwizzle.h; path = ../Controller/LLController/JRSwizzle.h; sourceTree = "<group>"; };
+		267DF2BE1D648B74005D2639 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRSwizzle.m; path = ../Controller/LLController/JRSwizzle.m; sourceTree = "<group>"; };
 		267DF2BF1D648B74005D2639 /* LLFlowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LLFlowController.h; path = LLController/LLFlowController.h; sourceTree = "<group>"; };
 		267DF2C01D648B74005D2639 /* LLFlowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LLFlowController.m; path = LLController/LLFlowController.m; sourceTree = "<group>"; };
 		267DF2C11D648B74005D2639 /* LLIntroController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LLIntroController.h; path = LLController/LLIntroController.h; sourceTree = "<group>"; };
@@ -165,10 +168,6 @@
 		267DF2CD1D648B74005D2639 /* LLScanningModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LLScanningModel.m; path = LLModel/LLScanningModel.m; sourceTree = "<group>"; };
 		267DF2CE1D648B74005D2639 /* ScanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanModel.h; path = LLModel/ScanModel.h; sourceTree = "<group>"; };
 		267DF2CF1D648B74005D2639 /* ScanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScanModel.m; path = LLModel/ScanModel.m; sourceTree = "<group>"; };
-		267DF2D01D648B74005D2639 /* ScanningModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanningModel.h; path = LLModel/ScanningModel.h; sourceTree = "<group>"; };
-		267DF2D11D648B74005D2639 /* ScanningModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScanningModel.m; path = LLModel/ScanningModel.m; sourceTree = "<group>"; };
-		267DF2D51D648B74005D2639 /* LLFlowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LLFlowCell.h; path = LLView/LLFlowCell.h; sourceTree = "<group>"; };
-		267DF2D61D648B74005D2639 /* LLFlowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LLFlowCell.m; path = LLView/LLFlowCell.m; sourceTree = "<group>"; };
 		267DF2D71D648B74005D2639 /* LLIntroBelowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LLIntroBelowCell.h; path = LLView/LLIntroBelowCell.h; sourceTree = "<group>"; };
 		267DF2D81D648B74005D2639 /* LLIntroBelowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LLIntroBelowCell.m; path = LLView/LLIntroBelowCell.m; sourceTree = "<group>"; };
 		267DF2D91D648B74005D2639 /* LLIntroCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LLIntroCell.h; path = LLView/LLIntroCell.h; sourceTree = "<group>"; };
@@ -253,6 +252,8 @@
 		26AE8F451D48D39C00E5E763 /* NearConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NearConstant.h; sourceTree = "<group>"; };
 		26AE8F471D48D5C300E5E763 /* KKLocationVModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLocationVModel.h; sourceTree = "<group>"; };
 		26AE8F481D48D5C300E5E763 /* KKLocationVModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLocationVModel.m; sourceTree = "<group>"; };
+		26B5E40C1D6BFE11001DACAB /* KKSearchMsgTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSearchMsgTVCell.h; sourceTree = "<group>"; };
+		26B5E40D1D6BFE11001DACAB /* KKSearchMsgTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSearchMsgTVCell.m; sourceTree = "<group>"; };
 		26B9D4291D5E27D100BBEBE0 /* KKLoginRegisButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginRegisButton.h; sourceTree = "<group>"; };
 		26B9D42A1D5E27D100BBEBE0 /* KKLoginRegisButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginRegisButton.m; sourceTree = "<group>"; };
 		26B9D42C1D5E9D1F00BBEBE0 /* KKCheckUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKCheckUtil.h; sourceTree = "<group>"; };
@@ -261,6 +262,14 @@
 		26B9D4501D6014D800BBEBE0 /* KKSmsProc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSmsProc.m; sourceTree = "<group>"; };
 		26B9D4521D60A5F900BBEBE0 /* KKLoginProc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKLoginProc.h; sourceTree = "<group>"; };
 		26B9D4531D60A5F900BBEBE0 /* KKLoginProc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKLoginProc.m; sourceTree = "<group>"; };
+		26D244571D6B1C2E0028BB22 /* KKSetLoginTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSetLoginTVCell.h; sourceTree = "<group>"; };
+		26D244581D6B1C2E0028BB22 /* KKSetLoginTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSetLoginTVCell.m; sourceTree = "<group>"; };
+		26D2445A1D6B4BC20028BB22 /* KKFrameNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKFrameNavController.h; sourceTree = "<group>"; };
+		26D2445B1D6B4BC20028BB22 /* KKFrameNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKFrameNavController.m; sourceTree = "<group>"; };
+		26D2445D1D6BE2810028BB22 /* KKSearchInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSearchInfoView.h; sourceTree = "<group>"; };
+		26D2445E1D6BE2810028BB22 /* KKSearchInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSearchInfoView.m; sourceTree = "<group>"; };
+		26D2445F1D6BE2810028BB22 /* KKSearchFlowDirectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSearchFlowDirectionView.h; sourceTree = "<group>"; };
+		26D244601D6BE2810028BB22 /* KKSearchFlowDirectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSearchFlowDirectionView.m; sourceTree = "<group>"; };
 		26D695AD1D5CBF290010A025 /* KKRegisterViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRegisterViewC.h; sourceTree = "<group>"; };
 		26D695AE1D5CBF290010A025 /* KKRegisterViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKRegisterViewC.m; sourceTree = "<group>"; };
 		26D695B01D5CC61B0010A025 /* KKRegisterShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKRegisterShowView.h; sourceTree = "<group>"; };
@@ -371,14 +380,12 @@
 			children = (
 				267DF2EA1D648BEE005D2639 /* KKSearchVC.h */,
 				267DF2EB1D648BEE005D2639 /* KKSearchVC.m */,
-				267DF2BD1D648B74005D2639 /* JRSwizzle.h */,
-				267DF2BE1D648B74005D2639 /* JRSwizzle.m */,
+				267DF2C31D648B74005D2639 /* LLScanController.h */,
+				267DF2C41D648B74005D2639 /* LLScanController.m */,
 				267DF2BF1D648B74005D2639 /* LLFlowController.h */,
 				267DF2C01D648B74005D2639 /* LLFlowController.m */,
 				267DF2C11D648B74005D2639 /* LLIntroController.h */,
 				267DF2C21D648B74005D2639 /* LLIntroController.m */,
-				267DF2C31D648B74005D2639 /* LLScanController.h */,
-				267DF2C41D648B74005D2639 /* LLScanController.m */,
 				267DF2C51D648B74005D2639 /* NSDictionary+Unicode.h */,
 				267DF2C61D648B74005D2639 /* NSDictionary+Unicode.m */,
 			);
@@ -392,8 +399,6 @@
 				267DF2CD1D648B74005D2639 /* LLScanningModel.m */,
 				267DF2CE1D648B74005D2639 /* ScanModel.h */,
 				267DF2CF1D648B74005D2639 /* ScanModel.m */,
-				267DF2D01D648B74005D2639 /* ScanningModel.h */,
-				267DF2D11D648B74005D2639 /* ScanningModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,12 +406,16 @@
 		267DF2D31D648B74005D2639 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				267DF2D51D648B74005D2639 /* LLFlowCell.h */,
-				267DF2D61D648B74005D2639 /* LLFlowCell.m */,
 				267DF2D71D648B74005D2639 /* LLIntroBelowCell.h */,
 				267DF2D81D648B74005D2639 /* LLIntroBelowCell.m */,
 				267DF2D91D648B74005D2639 /* LLIntroCell.h */,
 				267DF2DA1D648B74005D2639 /* LLIntroCell.m */,
+				26B5E40C1D6BFE11001DACAB /* KKSearchMsgTVCell.h */,
+				26B5E40D1D6BFE11001DACAB /* KKSearchMsgTVCell.m */,
+				26D2445D1D6BE2810028BB22 /* KKSearchInfoView.h */,
+				26D2445E1D6BE2810028BB22 /* KKSearchInfoView.m */,
+				26D2445F1D6BE2810028BB22 /* KKSearchFlowDirectionView.h */,
+				26D244601D6BE2810028BB22 /* KKSearchFlowDirectionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,6 +423,8 @@
 		267DF2DB1D648B74005D2639 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				267DF2BD1D648B74005D2639 /* JRSwizzle.h */,
+				267DF2BE1D648B74005D2639 /* JRSwizzle.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -688,6 +699,8 @@
 			children = (
 				269EFE8E1D649A8F0011E89B /* XPButton.h */,
 				269EFE8F1D649A8F0011E89B /* XPButton.m */,
+				26D244571D6B1C2E0028BB22 /* KKSetLoginTVCell.h */,
+				26D244581D6B1C2E0028BB22 /* KKSetLoginTVCell.m */,
 				26E582861D52CF83007FB00E /* KKSetTViewCell.h */,
 				26E582871D52CF83007FB00E /* KKSetTViewCell.m */,
 				26FBBD4E1D54828E00EAAAA9 /* KKPlaceholderTextView.h */,
@@ -834,6 +847,8 @@
 			children = (
 				26D6BD6F1D4252CB00CFBB01 /* KKFrameTabC.h */,
 				26D6BD701D4252CB00CFBB01 /* KKFrameTabC.m */,
+				26D2445A1D6B4BC20028BB22 /* KKFrameNavController.h */,
+				26D2445B1D6B4BC20028BB22 /* KKFrameNavController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1121,6 +1136,7 @@
 				269EFE791D6499D10011E89B /* XPDrugNexineModel.m in Sources */,
 				26AD7A121D4A44B6009217B5 /* KKMapView.m in Sources */,
 				269EFE8B1D6499EC0011E89B /* XPMediTClassTVCell.m in Sources */,
+				26D244621D6BE2810028BB22 /* KKSearchFlowDirectionView.m in Sources */,
 				26D6BD5D1D42456F00CFBB01 /* UIView+HUD.m in Sources */,
 				269EFE901D649A8F0011E89B /* XPButton.m in Sources */,
 				269EFE511D6499A30011E89B /* XPFactory.m in Sources */,
@@ -1134,6 +1150,7 @@
 				26E2AB371D63430B00A1463C /* UITableViewCell+KKExtension.m in Sources */,
 				26AE8F491D48D5C300E5E763 /* KKLocationVModel.m in Sources */,
 				26D6BD4D1D4244AB00CFBB01 /* AppDelegate.m in Sources */,
+				26D244611D6BE2810028BB22 /* KKSearchInfoView.m in Sources */,
 				268FB8371D5AB29100FA35F2 /* KKSquareButton.m in Sources */,
 				26D6BD5C1D42456F00CFBB01 /* UIScrollView+Refresh.m in Sources */,
 				26D6BD711D4252CB00CFBB01 /* KKFrameTabC.m in Sources */,
@@ -1151,6 +1168,7 @@
 				269EFE891D6499EC0011E89B /* XPListViewCell.m in Sources */,
 				269EFE881D6499EC0011E89B /* XPDetailCell.m in Sources */,
 				26E5D7DC1D49AA8800B6CCC1 /* KKAnno.m in Sources */,
+				26B5E40E1D6BFE11001DACAB /* KKSearchMsgTVCell.m in Sources */,
 				26D6BD6A1D424B3A00CFBB01 /* NSDate+Extension.m in Sources */,
 				269EFE7A1D6499D10011E89B /* XPDrugsModel.m in Sources */,
 				2635AA061D5C78D700BF181F /* KKJustifiedLabel.m in Sources */,
@@ -1174,7 +1192,6 @@
 				269EFE671D6499BB0011E89B /* XPMedClassVC.m in Sources */,
 				26E5828C1D52ED7E007FB00E /* KKAboutViewC.m in Sources */,
 				267DF2E11D648B74005D2639 /* LLScanController.m in Sources */,
-				267DF2E61D648B74005D2639 /* ScanningModel.m in Sources */,
 				267DF2EC1D648BEE005D2639 /* KKSearchVC.m in Sources */,
 				264B33481D5B5D58000C8911 /* UIButton+KKExtension.m in Sources */,
 				26D6BD5B1D42456F00CFBB01 /* NSString+YX.m in Sources */,
@@ -1186,6 +1203,7 @@
 				269EFE691D6499BB0011E89B /* XPSearchController.m in Sources */,
 				267DF2DF1D648B74005D2639 /* LLFlowController.m in Sources */,
 				265671451D62CFDD00AC3DD9 /* KKChangePassVC.m in Sources */,
+				26D244591D6B1C2E0028BB22 /* KKSetLoginTVCell.m in Sources */,
 				26E5828F1D531493007FB00E /* KKLoginViewC.m in Sources */,
 				264B33431D5B1418000C8911 /* KKLoginShowView.m in Sources */,
 				26D6BD771D42532F00CFBB01 /* KKDisVCtrl.m in Sources */,
@@ -1194,11 +1212,11 @@
 				265E87FE1D669FC20087E173 /* KKUserFileProc.m in Sources */,
 				26D695AF1D5CBF290010A025 /* KKRegisterViewC.m in Sources */,
 				26AD7A021D4A2B01009217B5 /* KKCenterAnno.m in Sources */,
-				267DF2E71D648B74005D2639 /* LLFlowCell.m in Sources */,
 				26A8A1681D503AC8007894CD /* KKNearbyTViewCell.m in Sources */,
 				264590B71D5DCA04005A42D5 /* KKRegisterPassViewC.m in Sources */,
 				26D6BD6D1D42503400CFBB01 /* UIView+Frame.m in Sources */,
 				267DF2E41D648B74005D2639 /* LLScanningModel.m in Sources */,
+				26D2445C1D6B4BC20028BB22 /* KKFrameNavController.m in Sources */,
 				26E582A41D5315EC007FB00E /* KKCustomVC.m in Sources */,
 				269EFE681D6499BB0011E89B /* XPMediController.m in Sources */,
 				269EFE7B1D6499D10011E89B /* XPListModel.m in Sources */,
@@ -1339,7 +1357,8 @@
 			baseConfigurationReference = 6F10234853F8E081D978B540 /* Pods-DePoint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanHang Liu (JNH4BNSUWC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanHang Liu (JNH4BNSUWC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DePoint/Resource",
@@ -1464,8 +1483,9 @@
 					"\"WebP\"",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = IOS1604.kk.dp.win;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kk.medical.search.201608;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1474,7 +1494,8 @@
 			baseConfigurationReference = 13AE236248656BA1E762C9AC /* Pods-DePoint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: DuanHang Liu (JNH4BNSUWC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DuanHang Liu (JNH4BNSUWC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DePoint/Resource",
@@ -1599,8 +1620,9 @@
 					"\"WebP\"",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = IOS1604.kk.dp.win;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kk.medical.search.201608;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -17,7 +17,7 @@
 
 @interface KKLoginViewC() <TencentSessionDelegate>
 @property (nonatomic, strong)TencentOAuth *tencentOAuth;
-@property (nonatomic, weak) KKLoginShowView *showView; //
+@property (nonatomic, weak) KKLoginShowView *showView;
 @end
 
 
@@ -29,21 +29,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"登录" tintColor:KKGLOTINTCOLOR backgroundColor:[UIColor clearColor]];
-    [self setNavBottmLinehidden:YES];
-    [self.view kk_viewWithVisualEffName:@"130313604324531250"];
+    //    [self.view kk_viewWithVisualEffName:@"130313604324531250"];
+    self.view.backgroundColor = KKGlobalControllerBackgroundColor;
+    self.navigationItem.title = @"登录";
     _sec = 0;
     
     [self showView];
     
-    UIButton *registerButton = [UIButton kk_buttonWithTitle:@"注册"];
-    [self setNavBarRightBtn:registerButton];
     
     __weak typeof(self) weakSelf = self;
-    [registerButton bk_addEventHandler:^(id sender) {
+    UIBarButtonItem *registerButton = [[UIBarButtonItem alloc] bk_initWithTitle:@"注册" style:UIBarButtonItemStyleDone handler:^(id sender) {
         weakSelf.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:[[KKRegisterViewC alloc] initWitTitle:@"注册" isRegister:YES] animated:YES];
-    } forControlEvents:UIControlEventTouchUpInside];
+    }];
+    self.navigationItem.rightBarButtonItem = registerButton;
 }
 
 - (KKLoginShowView *)showView {
@@ -163,9 +162,11 @@
         NSLog(@"UserId:%@",uid);
         NSLog(@"expiresDate:%@",expiresDate);
         NSDictionary *dic = @{@"access_token":accessToken,@"uid":uid,@"expirationDate":expiresDate};
-        
         //通过授权信息注册登录
         [self.view showHUD];
+        
+        
+        
         __weak typeof(self) weakSelf = self;
         [KKLoginProc kk_thirdLoginWithDictionary:dic platform:BmobSNSPlatformQQ complehandler:^(NSError *error, NSString *username) {
             [weakSelf.view hideHUD];

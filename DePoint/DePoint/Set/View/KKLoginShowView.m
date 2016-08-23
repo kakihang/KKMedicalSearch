@@ -14,8 +14,11 @@
 @property (nonatomic, strong) UIView *loginBgView; // 登录背景的view
 @property (nonatomic, strong) UIView *oneKeyLoginBgView; // 一键登录背景view
 
-@property (nonatomic, strong) KKJustifiedLabel *userLa; // 用户
-@property (nonatomic, strong) KKJustifiedLabel *passLa; // 密码
+//@property (nonatomic, strong) KKJustifiedLabel *userLa; // 用户
+//@property (nonatomic, strong) KKJustifiedLabel *passLa; // 密码
+@property (nonatomic, strong) UIImageView *userView; // 用户
+@property (nonatomic, strong) UIImageView *passView; // 密码
+
 @property (nonatomic, strong) UIButton *registerBtn; // 注册按钮
 @property (nonatomic, strong) UIView *tagView; //标签
 
@@ -55,8 +58,10 @@
         CGFloat margin = KKScreenWidthPrecent(0.08);
         CGFloat height = KKScreenHeightPrecent(0.05);
         CGFloat topMargin = KKScreenHeightPrecent(0.1);
-        CGFloat phoneLaWidth = KKScreenWidthPrecent(0.22);
+        CGFloat tfMargin = KKScreenWidthPrecent(0.03);
         CGFloat sendMsgWidth = KKScreenWidthPrecent(0.2);
+        CGFloat imageHeight = height * 0.7;
+        CGFloat loginHeight = KKScreenHeightPrecent(0.06);
         
         // 快速登录
         _quickLoginBtn = [UIButton kk_buttonWithType:UIButtonTypeRoundedRect title:@"快速登录"];
@@ -88,14 +93,13 @@
             make.width.mas_equalTo(_quickLoginBtn).multipliedBy(0.6);
         }];
         
-        _userLa = [KKJustifiedLabel kk_labelWithText:@"手机号码："];
-        _userLa.backgroundColor = [UIColor clearColor];
-        [_loginBgView addSubview:_userLa];
-        [_userLa mas_makeConstraints:^(MASConstraintMaker *make) {
+        _userView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"phone24"]];
+        [_loginBgView addSubview:_userView];
+        [_userView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(_quickLoginBtn.mas_left);
-            make.top.mas_equalTo(_tagView.mas_bottom);
-            make.height.mas_equalTo(_quickLoginBtn);
-            make.width.mas_equalTo(phoneLaWidth);
+            make.top.mas_equalTo(_tagView.mas_bottom).mas_equalTo((height-imageHeight) * 0.5);
+            make.height.mas_equalTo(imageHeight);
+            make.width.mas_equalTo(_userView.mas_height).multipliedBy(0.7);
         }];
         
         _userTf = [UITextField kk_createWithPlaceholder:@"请输入手机号码"];
@@ -103,10 +107,20 @@
         _userTf.keyboardType = UIKeyboardTypeNumberPad;
         [_loginBgView addSubview:_userTf];
         [_userTf mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(_userLa.mas_right);
-            make.height.mas_equalTo(_userLa);
-            make.top.mas_equalTo(_userLa);
+            make.left.mas_equalTo(_userView.mas_right).mas_equalTo(tfMargin);
+            make.height.mas_equalTo(height);
+            make.top.mas_equalTo(_tagView.mas_bottom);
         }];
+        
+        //        _userLa = [KKJustifiedLabel kk_labelWithText:@"手机号码："];
+        //        _userLa.backgroundColor = [UIColor clearColor];
+        //        [_loginBgView addSubview:_userLa];
+        //        [_userLa mas_makeConstraints:^(MASConstraintMaker *make) {
+        //            make.left.mas_equalTo(_quickLoginBtn.mas_left);
+        //            make.top.mas_equalTo(_tagView.mas_bottom);
+        //            make.height.mas_equalTo(_quickLoginBtn);
+        //            make.width.mas_equalTo(phoneLaWidth);
+        //        }];
         
         _sendMag = [UIButton buttonWithType:UIButtonTypeCustom];
         _sendMag.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -119,35 +133,44 @@
         [_sendMag mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(_userTf.mas_right);
             make.right.mas_equalTo(_accLoginBtn);
-            make.height.mas_equalTo(_userLa);
+            make.height.mas_equalTo(_userTf);
             make.top.mas_equalTo(_userTf);
             make.width.mas_equalTo(sendMsgWidth);
         }];
         
-        _passLa = [KKJustifiedLabel kk_labelWithText:@"验证码："];
-        _passLa.backgroundColor = [UIColor clearColor];
-        [_loginBgView addSubview:_passLa];
-        [_passLa mas_makeConstraints:^(MASConstraintMaker *make) {
+        //        _passLa = [KKJustifiedLabel kk_labelWithText:@"验证码："];
+        //        _passLa.backgroundColor = [UIColor clearColor];
+        //        [_loginBgView addSubview:_passLa];
+        //        [_passLa mas_makeConstraints:^(MASConstraintMaker *make) {
+        //            make.left.mas_equalTo(_quickLoginBtn.mas_left);
+        //            make.top.mas_equalTo(_userLa.mas_bottom);
+        //            make.size.mas_equalTo(_userLa);
+        //        }];
+        
+        _passView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"password24"]];
+        [_loginBgView addSubview:_passView];
+        [_passView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(_quickLoginBtn.mas_left);
-            make.top.mas_equalTo(_userLa.mas_bottom);
-            make.size.mas_equalTo(_userLa);
+            make.top.mas_equalTo(_userTf.mas_bottom).mas_equalTo((height-imageHeight)*0.5);
+            make.size.mas_equalTo(_userView);
         }];
         
         _passTf = [UITextField kk_createWithPlaceholder:@"请输入验证码"];
         _passTf.backgroundColor = [UIColor clearColor];
         [_loginBgView addSubview:_passTf];
         [_passTf mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(_passLa.mas_right);
-            make.height.mas_equalTo(_passLa);
-            make.top.mas_equalTo(_passLa);
+            make.left.mas_equalTo(_passView.mas_right).mas_equalTo(tfMargin);
+            make.height.mas_equalTo(height);
+            make.top.mas_equalTo(_userTf.mas_bottom);
             make.right.mas_equalTo(_accLoginBtn);
         }];
         
         _forgetBtn = [UIButton kk_buttonWithTitle:@"忘记密码?"];
         _forgetBtn.backgroundColor = [UIColor clearColor];
+        _forgetBtn.titleLabel.font = KKGlobalDetailTextFont;
         [_loginBgView addSubview:_forgetBtn];
         [_forgetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(_passLa.mas_bottom);
+            make.top.mas_equalTo(_passView.mas_bottom);
             make.right.mas_equalTo(_accLoginBtn);
         }];
         
@@ -155,8 +178,8 @@
         _loginBtn.enabled = NO;
         [_loginBgView addSubview:_loginBtn];
         [_loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(_passLa);
-            make.height.mas_equalTo(_passLa);
+            make.left.mas_equalTo(_passView);
+            make.height.mas_equalTo(loginHeight);
             make.right.mas_equalTo(_accLoginBtn);
             make.top.mas_equalTo(_forgetBtn.mas_bottom).mas_equalTo(margin*0.8);
         }];
@@ -265,9 +288,9 @@
     self.passTf.secureTextEntry = NO;
     self.passTf.placeholder = @"请输入验证码";
     self.passTf.keyboardType = UIKeyboardTypeNumberPad;
-    self.passLa.text = @"验证码：";
+    //    self.passLa.text = @"验证码：";
     self.sendMag.hidden = NO;
-    self.userLa.text = @"手机号码：";
+    //    self.userLa.text = @"手机号码：";
     self.userTf.placeholder = @"请输入手机号码";
     self.userTf.keyboardType = UIKeyboardTypeNumberPad;
     [self changeTagCenterX:_quickLoginBtn.centerX];
@@ -278,9 +301,9 @@
     self.passTf.secureTextEntry = YES;
     self.passTf.placeholder = @"请输入密码";
     self.passTf.keyboardType = UIKeyboardTypeDefault;
-    self.passLa.text = @"密码：";
+    //    self.passLa.text = @"密码：";
     self.sendMag.hidden = YES;
-    self.userLa.text = @"账号：";
+    //    self.userLa.text = @"账号：";
     self.userTf.placeholder = @"输入账号或手机号";
     self.userTf.keyboardType = UIKeyboardTypeDefault;
     [self changeTagCenterX:_accLoginBtn.centerX];

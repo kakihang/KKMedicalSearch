@@ -36,10 +36,10 @@
     self.tableView.scrollEnabled = NO;
     self.tableView.height = self.tableView.bounds.size.height;
     __weak typeof(self) weakSelf = self;
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]bk_initWithTitle:@"返回" style:UIBarButtonItemStyleDone handler:^(id sender) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    }];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    //    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]bk_initWithTitle:@"返回" style:UIBarButtonItemStyleDone handler:^(id sender) {
+    //        [weakSelf.navigationController popViewControllerAnimated:YES];
+    //    }];
+    //    self.navigationItem.leftBarButtonItem = leftItem;
     
     self.tableView.rowHeight = self.tableView.bounds.size.height;
     [self.tableView registerClass:[XPDetailCell class] forCellReuseIdentifier:@"Cell"];

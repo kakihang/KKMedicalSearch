@@ -18,7 +18,9 @@
 static NSString *cellID_ = @"KKMedicineChestVCCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"药箱" tintColor:KKGLOTINTCOLOR backgroundColor:KKGLOBARCOLOR];
+    
+    self.view.backgroundColor = KKGlobalControllerBackgroundColor;
+    self.navigationItem.title = @"药箱";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID_];
     [self setupNavButton];
 }
@@ -26,7 +28,7 @@ static NSString *cellID_ = @"KKMedicineChestVCCellID";
 - (void)setupNavButton {
     UIButton *edit = [UIButton kk_buttonWithTitle:@"编辑"];
     edit.frame = CGRectMake(0, 0, 44, 44);
-    [self setNavBarRightBtn:edit];
+    //    [self setNavBarRightBtn:edit];
     [edit bk_addEventHandler:^(id sender) {
         
         for (int i=0; i<5; i++) {
@@ -55,11 +57,11 @@ static NSString *cellID_ = @"KKMedicineChestVCCellID";
             }];
         }
         
-//        NSArray *arr = [KKMEDICINEDATA kk_getSanBoxWithUserName:@"090"];
-//        NSLog(@"0000---%zd", arr.count);
-//        [arr enumerateObjectsUsingBlock:^(KKMedicineDataModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            NSLog(@"%@ %@ %@ %@ %@ %@", obj.userName, obj.identifier, obj.saveDate, obj.text, obj.detailText, obj.icon);
-//        }];
+        //        NSArray *arr = [KKMEDICINEDATA kk_getSanBoxWithUserName:@"090"];
+        //        NSLog(@"0000---%zd", arr.count);
+        //        [arr enumerateObjectsUsingBlock:^(KKMedicineDataModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //            NSLog(@"%@ %@ %@ %@ %@ %@", obj.userName, obj.identifier, obj.saveDate, obj.text, obj.detailText, obj.icon);
+        //        }];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 

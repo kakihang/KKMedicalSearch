@@ -6,8 +6,6 @@
 //  Copyright © 2016年 liudhkk. All rights reserved.
 //
 
-#import "KKCustomVC.h"
-
-@interface KKLoginInfoVC : KKCustomVC
+@interface KKLoginInfoVC : UIViewController
 
 @end

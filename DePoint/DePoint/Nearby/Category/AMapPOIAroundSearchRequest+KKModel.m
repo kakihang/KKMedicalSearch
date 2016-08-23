@@ -25,7 +25,7 @@
     // 交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施
     //    request.types = @"餐饮服务|生活服务";
     request.types = @"医疗保健服务";
-    request.radius =  1500;//<! 查询半径，范围：0-50000，单位：米 [default = 3000]
+    request.radius =  3000;//<! 查询半径，范围：0-50000，单位：米 [default = 3000]
     request.sortrule = 0; //<! 排序规则, 0-距离排序；1-综合排序, 默认1
     request.requireExtension = NO; //<! 是否返回扩展信息，默认为 NO。
     request.offset = 50; //每页记录数

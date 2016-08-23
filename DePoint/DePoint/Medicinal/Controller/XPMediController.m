@@ -40,7 +40,7 @@ static NSString *three = @"XPMedCellthree";
         [weakSelf.navigationController pushViewController:vc animated:YES];
     }];
     selectBt = 0;
-    UIImageView *headView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headView"]];
+    UIImageView *headView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"set_login_head"]];
     headView.contentMode = UIViewContentModeScaleAspectFill;
     headView.clipsToBounds = YES;
     [headView setFrame:CGRectMake(0, 0,KWidth,_headViewHeight)];

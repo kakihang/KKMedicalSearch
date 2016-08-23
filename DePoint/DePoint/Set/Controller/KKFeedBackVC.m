@@ -25,17 +25,15 @@ static NSString *cellID_ = @"KKFeedBackVCCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavTitle:@"意见反馈" tintColor:KKGLOTINTCOLOR backgroundColor:KKGLOBARCOLOR];
+    self.view.backgroundColor = KKGlobalControllerBackgroundColor;
+    self.navigationItem.title = @"意见反馈";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID_];
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
     
     // 发送按钮
-    UIButton *sendBt = [UIButton buttonWithType:UIButtonTypeSystem];
-    sendBt.frame = CGRectMake(0, 0, 50, 40);
-    [sendBt setTitle:@"发送" forState:UIControlStateNormal];
-    [sendBt addTarget:self action:@selector(sendMsg:) forControlEvents:UIControlEventTouchUpInside];
-    [self setNavBarRightBtn:sendBt];
+    UIBarButtonItem *sendBt = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(sendMsg:)];
+    self.navigationItem.rightBarButtonItem = sendBt;
 }
 
 - (void)didReceiveMemoryWarning {

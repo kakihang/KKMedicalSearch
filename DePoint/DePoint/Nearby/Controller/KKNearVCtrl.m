@@ -24,7 +24,7 @@ static NSString *cellID = @"KKNearVCtrlCellId";
 @property (nonatomic, strong) NSMutableArray <KKAnno *> *dataList; // 附近单元数组
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) KKColumnButtons *store;
-@property (nonatomic, strong) KKColumnButtons *range;
+//@property (nonatomic, strong) KKColumnButtons *range; //暂不使用范围功能
 @property (atomic, assign) NSInteger didSelectCount;
 @end
 
@@ -38,11 +38,15 @@ static NSString *cellID = @"KKNearVCtrlCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"%s", __func__);
+    
+    [self setupStatusBarBackground];
     self.tableView.rowHeight = 58; //后面会自动修改
     [self.tableView registerClass:[KKNearbyTViewCell class] forCellReuseIdentifier:cellID];
     [self.locationVM setSearchDelegate:self]; // 搜索代理
-    [self.store kk_createColumns:@[@"药店药房", @"药店药房", @"医院"]]; // 药店药房、医院按钮组
-    [self.range kk_createColumns:@[@"1500", @"500", @"1000", @"1500", @"2000", @"3000"]];
+    [self.store kk_createColumnsNew:@[@"药店药房", @"医院"]];
+    //    [self.store kk_createColumns:@[@"药店药房", @"药店药房", @"医院"]]; // 药店药房、医院按钮组
+    //    [self.range kk_createColumns:@[@"1500", @"500", @"1000", @"1500", @"2000", @"3000"]];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,7 +75,25 @@ static NSString *cellID = @"KKNearVCtrlCellId";
     self.mapView.delegate = nil;
 }
 
+/**
+ *  @author liudhkk, 16-08-22 14:08:26
+ *
+ *  设置状态栏背景
+ */
+- (void)setupStatusBarBackground {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KKSCREENBOUNDSIZE.width, 20)];
+    view.backgroundColor = KKGlobalViewColor;
+    view.alpha = 0.7;
+    [self.mapView addSubview:view];
+}
 
+/**
+ *  @author liudhkk, 16-08-22 15:08:43
+ *
+ *  搜索指定经纬度
+ *
+ *  @param coordinate 指定经纬度
+ */
 - (void)pointSearch:(CLLocationCoordinate2D)coordinate {
     [self pointSearchMore:coordinate];
 }
@@ -118,7 +140,7 @@ static NSString *cellID = @"KKNearVCtrlCellId";
     }
     
     [self.store kk_setButtonArrHidden:YES];
-    [self.range kk_setButtonArrHidden:YES];
+    //    [self.range kk_setButtonArrHidden:YES];
 }
 
 // 商户大头针
@@ -198,7 +220,7 @@ static NSString *cellID = @"KKNearVCtrlCellId";
     KKNearbyTViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     cell.nameLb.text = self.dataList[indexPath.row].title;
     cell.addressLb.text = self.dataList[indexPath.row].subtitle;
-    cell.distanceLb.text = [NSString stringWithFormat:@"%zd 米", self.dataList[indexPath.row].distance];
+    cell.distanceLb.text = [NSString stringWithFormat:@"距离%zd米", self.dataList[indexPath.row].distance];
     return cell;
 }
 
@@ -212,6 +234,7 @@ static NSString *cellID = @"KKNearVCtrlCellId";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     KKAnno *ann = self.dataList[indexPath.row];
     
     CGPoint centerPoint = self.mapView.center;
@@ -275,9 +298,10 @@ static NSString *cellID = @"KKNearVCtrlCellId";
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_mapView addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(20);
-            make.bottom.mas_equalTo(-20);
-            make.size.mas_equalTo(CGSizeMake(32, 32));
+            make.left.mas_equalTo(KKScreenWidthPrecent(0.03));
+            make.bottom.mas_equalTo(-KKScreenHeightPrecent(0.03));
+            make.width.mas_equalTo(KKScreenWidthPrecent(0.087));
+            make.height.mas_equalTo(button.mas_width);
         }];
         [button setImage:[[UIImage imageNamed:@"location"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         [button bk_addEventHandler:^(id sender) {
@@ -289,7 +313,7 @@ static NSString *cellID = @"KKNearVCtrlCellId";
         
         UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
             [weakSelf.store kk_setButtonArrHidden:YES];
-            [weakSelf.range kk_setButtonArrHidden:YES];
+            //            [weakSelf.range kk_setButtonArrHidden:YES];
         }];
         [_mapView addGestureRecognizer:gr];
     }
@@ -311,6 +335,8 @@ static NSString *cellID = @"KKNearVCtrlCellId";
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.backgroundColor = KKGlobalControllerBackgroundColor;
         [self.view addSubview:_tableView];
         [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(0);
@@ -322,31 +348,30 @@ static NSString *cellID = @"KKNearVCtrlCellId";
 
 - (KKColumnButtons *)store {
     if(_store == nil) {
-        __weak typeof(self) weakSelf = self;
-        _store = [[KKColumnButtons alloc] initWithMode:KKColunmModeStore direction:KKColunmDirectionTop];
+        _store = [[KKColumnButtons alloc] initWithMode:KKColunmModeStore direction:KKColunmDirectionBottom];
         [self.mapView addSubview:_store];
         [_store mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.top.mas_equalTo(weakSelf.range);
-            make.right.mas_equalTo(weakSelf.range.mas_left).mas_equalTo(-20);
-            make.size.mas_equalTo(weakSelf.range);
+            make.top.mas_equalTo(KKScreenHeightPrecent(0.05));
+            make.right.mas_equalTo(-KKScreenWidthPrecent(0.05));
+            make.size.mas_equalTo(CGSizeMake(KKScreenWidthPrecent(0.12), KKScreenWidthPrecent(0.12)));
         }];
         _store.kk_columnButtonDeledate = self;
     }
     return _store;
 }
 
-- (KKColumnButtons *)range {
-    if(_range == nil) {
-        _range = [[KKColumnButtons alloc] initWithMode:KKColunmModeRange direction:KKColunmDirectionTop];
-        [self.mapView addSubview:_range];
-        [_range mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-25);
-            make.right.mas_equalTo(-25);
-            make.size.mas_equalTo(CGSizeMake(90, 25));
-        }];
-        _range.kk_columnButtonDeledate = self;
-    }
-    return _range;
-}
+//- (KKColumnButtons *)range {
+//    if(_range == nil) {
+//        _range = [[KKColumnButtons alloc] initWithMode:KKColunmModeRange direction:KKColunmDirectionTop];
+//        [self.mapView addSubview:_range];
+//        [_range mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.mas_equalTo(-25);
+//            make.right.mas_equalTo(-25);
+//            make.size.mas_equalTo(CGSizeMake(90, 25));
+//        }];
+//        _range.kk_columnButtonDeledate = self;
+//    }
+//    return _range;
+//}
 
 @end

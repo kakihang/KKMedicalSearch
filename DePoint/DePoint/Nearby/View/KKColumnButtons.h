@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, KKColunmDirection) {
 - (void)kk_createColumns:(NSArray *)columnArr;
 @property (nonatomic, strong) id <KKColumnButtonDelegate> kk_columnButtonDeledate;  // 代理
 
+- (void)kk_createColumnsNew:(NSArray *)columnArr;
 
 - (void)kk_setButtonArrHidden:(BOOL)flag;
 

@@ -6,9 +6,7 @@
 //  Copyright © 2016年 liudhkk. All rights reserved.
 //
 
-#import "KKCustomVC.h"
-
-@interface KKRegisterPassViewC : KKCustomVC
+@interface KKRegisterPassViewC : UIViewController
 - (instancetype)initWithPhone:(NSString *)phone title:(NSString *)title;
 - (instancetype)init;
 @end

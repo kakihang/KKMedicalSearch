@@ -18,7 +18,7 @@
         _xpClick = [NSMutableArray new];
         UIButton *c = nil;
         for(int i =0;i<4;i++){
-            NSString *im = [NSString stringWithFormat:@"y%d",i + 1];
+            NSString *im = [NSString stringWithFormat:@"found%d",i + 1];
             XPButton *v =[XPButton buttonWithTitle:@"" imgName:im];
             CGFloat width = (self.contentView.bounds.size.width - 92) /4;
             [_xpClick addObject:v];

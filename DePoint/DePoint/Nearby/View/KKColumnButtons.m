@@ -33,6 +33,59 @@
     return self;
 }
 
+- (void)kk_createColumnsNew:(NSArray *)columnArr {
+    if (columnArr.count <= 0) {
+        NSAssert1(NO, @"%s: 输入参数不正确", __func__);
+    }
+    
+    CGFloat topMargin = KKScreenHeightPrecent(0.01);
+    CGFloat rightMargin = KKScreenWidthPrecent(0.05);
+    CGFloat height = KKScreenHeightPrecent(0.05);
+    CGFloat width = KKScreenWidthPrecent(0.3);
+    
+    UIView *spview = [self superview];
+    UIButton *lastButton;
+    [self.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [self setBackgroundImage:[UIImage imageNamed:@"zhuyi64"] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self addTarget:self action:@selector(showColumn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.buttonArr removeAllObjects];
+    __weak typeof(self) weakSelf = self;
+    for (int i=0; i<columnArr.count; i++) {
+        UIButton *button = [[UIButton alloc] init];
+        [button setTitle:columnArr[i] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"clumnsBG"] forState:UIControlStateNormal];
+        [button setTitleColor:KKGlobalTextWhiteColor forState:UIControlStateNormal];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        [button bk_addEventHandler:^(id sender) {
+            [weakSelf kk_setButtonArrHidden:YES];
+            [weakSelf.kk_columnButtonDeledate kk_touchColumn:weakSelf button:button title:columnArr[i] atIndex:i];
+        } forControlEvents:UIControlEventTouchUpInside];
+        [spview addSubview:button];
+        
+        if (i == 0) {
+            [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(-rightMargin);
+                make.top.mas_equalTo(weakSelf.mas_bottom).mas_equalTo(topMargin);
+                make.size.mas_equalTo(CGSizeMake(width, height));
+            }];
+        } else {
+            [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.height.mas_equalTo(lastButton);
+                make.top.mas_equalTo(lastButton.mas_bottom);
+            }];
+        }
+        
+        [self.buttonArr addObject:button];
+        lastButton = button;
+    }
+    
+    hiddenFlag = YES;
+    [self kk_setButtonArrHidden:hiddenFlag];
+}
+
+
 - (void)kk_createColumns:(NSArray *)columnArr {
     if (columnArr.count <= 0) {
         NSAssert1(NO, @"%s: 输入参数不正确", __func__);

@@ -17,7 +17,6 @@
 @end
 
 @interface Info : NSObject
-
 @property (nonatomic, copy) NSString *expiry_date;
 
 @property (nonatomic, assign) NSInteger retcode;
@@ -64,7 +63,7 @@
 
 @property (nonatomic, copy) NSString *prepn_unit;
 
-@property (nonatomic, assign) NSInteger production_batch;
+@property (nonatomic, copy) NSString *production_batch;
 
 @property (nonatomic, copy) NSString *pkg_unit;
 
@@ -73,8 +72,3 @@
 @property (nonatomic, assign) BOOL is_sale;
 
 @end
-
-
-
-
-

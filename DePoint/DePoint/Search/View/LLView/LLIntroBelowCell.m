@@ -9,6 +9,18 @@
 #import "LLIntroBelowCell.h"
 
 @implementation LLIntroBelowCell
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    
+    if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
+    {
+        [self division];
+        [self formLb];
+        [self packuomLb];
+        [self standardLb];
+        [self passnumLb];
+    }
+    return self;
+}
 
 - (UIView *)division {
     if(_division == nil) {
@@ -24,60 +36,81 @@
     return _division;
 }
 
-- (UILabel *)norms {
-    if(_norms == nil) {
-        _norms = [[UILabel alloc] init];
-        [self.contentView addSubview:_norms];
-        [_norms mas_makeConstraints:^(MASConstraintMaker *make) {
+- (UILabel *)reminder {
+    if(_reminder == nil) {
+        _reminder = [[UILabel alloc] init];
+        _reminder.numberOfLines = 0;
+        _reminder.font = [UIFont systemFontOfSize:15];
+        _reminder.textColor = [UIColor colorWithRed:146/255.0 green:146/255.0 blue:146/255.0 alpha:1.0];
+        [self.contentView addSubview:_reminder];
+        [_reminder mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.division.mas_bottom).equalTo(10);
             make.left.equalTo(20);
-            make.top.equalTo(self.division.mas_bottom).equalTo(20);
-            make.height.equalTo(25);
             make.right.equalTo(-20);
+            make.height.equalTo(80).priorityHigh();
         }];
     }
-    return _norms;
+    return _reminder;
 }
 
-- (UILabel *)ratify {
-    if(_ratify == nil) {
-        _ratify = [[UILabel alloc] init];
-        [self.contentView addSubview:_ratify];
-        [_ratify mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.norms);
-            make.top.equalTo(self.norms.mas_bottom).equalTo(20);
-            make.height.equalTo(25);
-            make.right.equalTo(-20);
+- (UILabel *)formLb {
+    if(_formLb == nil) {
+        _formLb = [[UILabel alloc] init];
+        _formLb.font = [UIFont systemFontOfSize:18];
+        [self.contentView addSubview:_formLb];
+        [_formLb mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.reminder.mas_bottom).equalTo(20);
+            make.left.equalTo(20);
+            make.right.equalTo(-10);
+            make.height.equalTo(20);
         }];
     }
-    return _ratify;
+    return _formLb;
 }
 
-- (UILabel *)pack {
-    if(_pack == nil) {
-        _pack = [[UILabel alloc] init];
-        [self.contentView addSubview:_pack];
-        [_pack mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.ratify);
-            make.top.equalTo(self.ratify.mas_bottom).equalTo(20);
-            make.height.equalTo(25);
-            make.right.equalTo(-20);
+- (UILabel *)packuomLb {
+    if(_packuomLb == nil) {
+        _packuomLb = [[UILabel alloc] init];
+        _packuomLb.font = [UIFont systemFontOfSize:18];
+        [self.contentView addSubview:_packuomLb];
+        [_packuomLb mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.formLb.mas_bottom).equalTo(20);
+            make.left.equalTo(self.formLb);
+            make.right.equalTo(-10);
+            make.height.equalTo(20);
         }];
     }
-    return _pack;
+    return _packuomLb;
 }
 
-- (UILabel *)ratif {
-    if(_ratif == nil) {
-        _ratif = [[UILabel alloc] init];
-        [self.contentView addSubview:_ratif];
-        [_ratif mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.pack);
-            make.top.equalTo(self.pack.mas_bottom).equalTo(20);
-            make.height.equalTo(25);
-            make.right.equalTo(-20);
+- (UILabel *)standardLb {
+    if(_standardLb == nil) {
+        _standardLb = [[UILabel alloc] init];
+        _standardLb.font = [UIFont systemFontOfSize:18];
+        [self.contentView addSubview:_standardLb];
+        [_standardLb mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.packuomLb.mas_bottom).equalTo(20);
+            make.left.equalTo(self.formLb);
+            make.right.equalTo(-10);
+            make.height.equalTo(20);
         }];
     }
-    return _ratif;
+    return _standardLb;
+}
+
+- (UILabel *)passnumLb {
+    if(_passnumLb == nil) {
+        _passnumLb = [[UILabel alloc] init];
+        _passnumLb.font = [UIFont systemFontOfSize:18];
+        [self.contentView addSubview:_passnumLb];
+        [_passnumLb mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.standardLb.mas_bottom).equalTo(20);
+            make.left.equalTo(self.formLb);
+            make.right.equalTo(-10);
+            make.height.equalTo(20);
+        }];
+    }
+    return _passnumLb;
 }
 
 

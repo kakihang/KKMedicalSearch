@@ -16,5 +16,6 @@
 @property (nonatomic) UILabel *codeLb;//13位条形码
 @property (nonatomic) UILabel *informationLb;//消息标题
 @property (nonatomic) UIButton *details;//详情按钮
+@property (nonatomic) UISegmentedControl *btn;
 
 @end

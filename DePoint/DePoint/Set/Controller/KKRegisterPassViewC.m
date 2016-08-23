@@ -34,10 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:_title tintColor:KKGLOTINTCOLOR backgroundColor:[UIColor clearColor]];
-    [self setNavBottmLinehidden:YES];
-    [self.view kk_viewWithVisualEffName:@"130313604324531250"];
-    
+    self.view.backgroundColor = KKGlobalControllerBackgroundColor;
+    self.navigationItem.title = _title;
     [self registerView];
 }
 
@@ -88,7 +86,7 @@
         [KKLoginProc kk_registerWithPhone:_phoneNumber password:_registerView.passVerifyTf.text complehandler:^(BOOL isSuccessful, NSError *error) {
             [weakSelf.view hideHUD];
             if (isSuccessful) {
-                [weakSelf.view showWarning:@"注册成功~"];
+                [weakSelf.view showWarning:[NSString stringWithFormat:@"%@成功~", _title]];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [weakSelf.navigationController popToRootViewControllerAnimated:YES];
                 });

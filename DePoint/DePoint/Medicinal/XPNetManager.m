@@ -15,19 +15,19 @@
     }];
 }
 +(id)getNexine:(NSInteger)page completionHandler:(void (^)(XPDrugNexineModel *, NSError *))completionHandler{
-    NSString *path =[NSString stringWithFormat:KNexinePath,page];
+    NSString *path =[NSString stringWithFormat:KNexinePath,(long)page];
     return [self GET:path parameters:nil completionHandler:^(id repsonseObj, NSError *error) {
         !completionHandler ? : completionHandler([XPDrugNexineModel parse:repsonseObj],error);
     }];
 }
 +(id)getList:(NSInteger)page more:(NSInteger)more completionHandler:(void (^)(XPListModel *, NSError *))completionHandler{
-    NSString *path =[NSString stringWithFormat:KListPath,page,more];
+    NSString *path =[NSString stringWithFormat:KListPath,(long)page,more];
     return [self GET:path parameters:nil completionHandler:^(id repsonseObj, NSError *error) {
         !completionHandler ? : completionHandler([XPListModel parse:repsonseObj],error);
     }];
 }
 +(id)getDetail:(NSInteger)page completionHandler:(void (^)(XPDetailModel *, NSError *))completionHandler{
-    NSString *path =[NSString stringWithFormat:KDetailPath,page];
+    NSString *path =[NSString stringWithFormat:KDetailPath,(long)page];
     return [self POST:path parameters:nil completionHandler:^(id repsonseObj, NSError *error) {
         !completionHandler ? : completionHandler([XPDetailModel parse:repsonseObj],error);
     }];

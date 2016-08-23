@@ -9,16 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface LLIntroBelowCell : UITableViewCell
+@property (nonatomic) UIView *division;//分割线
 
-@property (nonatomic) UILabel *norms;//type
+@property (nonatomic) UILabel *reminder;//提示
 
-@property (nonatomic) UILabel *ratify;//description
+@property (nonatomic) UILabel *formLb;//形态
 
-@property (nonatomic) UIView *division;
+@property (nonatomic) UILabel *packuomLb;//包装
 
-@property (nonatomic) UILabel *pack;
+@property (nonatomic) UILabel *standardLb;//规格
 
-@property (nonatomic) UILabel *ratif;
+@property (nonatomic) UILabel *passnumLb;//批准文号
 
 
 @end

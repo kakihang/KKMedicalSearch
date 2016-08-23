@@ -36,9 +36,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:_title tintColor:KKGLOTINTCOLOR backgroundColor:[UIColor clearColor]];
-    [self setNavBottmLinehidden:YES];
-    [self.view kk_viewWithVisualEffName:@"130313604324531250"];
+    self.navigationItem.title = _title;
+    self.view.backgroundColor = KKGlobalControllerBackgroundColor;
+    //    [self.view kk_viewWithVisualEffName:@"130313604324531250"];
     self.registerView = [KKRegisterShowView registerShowOnView:self.view index:0];
     
     [self.registerView.registerButton addTarget:self action:@selector(clickRegisterButtonf) forControlEvents:UIControlEventTouchUpInside];

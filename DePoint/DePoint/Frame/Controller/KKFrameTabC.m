@@ -14,7 +14,7 @@
 #import "KKSearchVC.h"
 #import "XPMediController.h"
 
-
+#import "KKFrameNavController.h"
 
 @implementation KKFrameTabC
 
@@ -23,8 +23,8 @@
     [super viewDidLoad];
     
     // 修改tabBar的渲染颜色
-    self.tabBar.barTintColor = KKGLOBARCOLOR;
-    self.tabBar.tintColor = KKGLOTINTCOLOR;
+    self.tabBar.barTintColor = KKGLOBAL; // 背景渲染
+    self.tabBar.tintColor = KKGlobalViewColor; // 图片文字子view渲染
     
     // 统一设置所有UITabBarItem属性
     UITabBarItem *item = [UITabBarItem appearance];
@@ -33,8 +33,8 @@
     
     // 添加yaopin搜索子控制器
     [self setupViewController:[[KKSearchVC alloc] init]
-                     navTitle:@"搜索"
-                  tabBarTitle:@"搜索"
+                     navTitle:@"扫描"
+                  tabBarTitle:@"扫描"
                         image:KKIMAGE(@"sear")
                 selectedImage:KKIMAGE(@"sear")];
     
@@ -73,32 +73,23 @@
     // 如有特殊需求请求具体子控制器内修改
     viewController.view.backgroundColor = KKGLOBAL; //全局颜色 238,238,238,1 _kk
     
-    UINavigationController *nav;
-    if ([viewController isKindOfClass:[KKSetVCtrl class]]) {
-        // 使用自定义导航栏
-        nav = [self setupCustomNav:(KKCustomVC *)viewController title:navTitle];
-    } else {
-        nav = [[UINavigationController alloc] initWithRootViewController:viewController];
-        viewController.navigationController.navigationBar.barTintColor = KKGLOBARCOLOR;
-        viewController.navigationItem.title = navTitle;
-    }
-    
+    KKFrameNavController *nav = [[KKFrameNavController alloc] initWithRootViewController:viewController];
+    // 导航栏设置
+    viewController.navigationItem.title = navTitle;
+    viewController.navigationController.navigationBar.barTintColor = KKGlobalViewColor;
+    viewController.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    [viewController.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:KKNavMainTitleTextFont, NSForegroundColorAttributeName:KKGlobalTextWhiteColor}];
+    // 底部tabBar设置
     viewController.tabBarItem.title = tabBarTitle;
     viewController.tabBarItem.image = image;
-    viewController.tabBarItem.selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    viewController.tabBarItem.selectedImage = selectedImage;
+    //    viewController.tabBarItem.selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]; // 使用原色
     
     
     // 添加子控制器
     [self addChildViewController:nav];
 }
 
-- (KKCustomNavigationC *)setupCustomNav:(KKCustomVC *)vc title:(NSString *)title {
-    // 这是自定义导航栏,C和子C使用的导航栏是分开的 _kk
-    KKCustomNavigationC *nav = [[KKCustomNavigationC alloc] initWithRootViewController:vc];
-    [vc setNavBarTitle:title];
-    [vc setNabbarBackgroundColor:KKGLOBARCOLOR];
-    return nav;
-}
 
 
 @end

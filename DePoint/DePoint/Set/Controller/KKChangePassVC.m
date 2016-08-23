@@ -26,9 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"我的信息" tintColor:KKGLOTINTCOLOR backgroundColor:[UIColor clearColor]];
-    [self setNavBottmLinehidden:YES];
-    [self.view kk_viewWithVisualEffName:@"130313604324531250"];
+    self.view.backgroundColor = KKGlobalControllerBackgroundColor;
+    self.navigationItem.title = @"我的信息";
     _rowHeight = KKScreenHeightPrecent(0.06);
     _row = 4;
     _margin = KKScreenWidthPrecent(0.1);

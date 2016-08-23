@@ -14,10 +14,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"关于" tintColor:KKGLOTINTCOLOR backgroundColor:KKGLOBARCOLOR];
-    
+    self.view.backgroundColor = KKGlobalControllerBackgroundColor;
+    self.navigationItem.title = @"关于";
     // 中间图标
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon-512"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon-513"]];
     imageView.layer.cornerRadius = 20; //直接设置圆角
     imageView.layer.masksToBounds = YES;
     [self.view addSubview:imageView];

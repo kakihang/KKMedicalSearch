@@ -39,9 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.navigationItem.title = @"扫描";
+    self.view.backgroundColor = KKGlobalControllerBackgroundColor;
     
     [self setupNav];
     
@@ -110,7 +108,7 @@
     
     [self.view.layer insertSublayer:layer atIndex:0];
     
-
+    
     //开始捕获
     [self.session startRunning];
     
@@ -144,7 +142,7 @@
         [self.session stopRunning];
         
         //移除图层
-//        [self.view.layer removeFromSuperlayer];
+        //        [self.view.layer removeFromSuperlayer];
         
         AVMetadataMachineReadableCodeObject *metadataObject = metadataObjects.firstObject;
         NSLog(@"%@", metadataObject.stringValue);
@@ -154,35 +152,38 @@
         if (metadataObject.stringValue.length == 13) {
             
             LLIntroController *vc = [[LLIntroController alloc] initWithStr:metadataObject.stringValue];
-         [self presentViewController:vc animated:YES completion:nil];
+            //            [self presentViewController:vc animated:YES completion:nil];
+            [self.navigationController pushViewController:vc animated:YES];
             NSLog(@"%@", metadataObject.stringValue);
             
         }
         if (metadataObject.stringValue.length == 20) {
-
+            
             LLFlowController *vc = [[LLFlowController alloc] initWithStr:metadataObject.stringValue];
-            [self presentViewController:vc animated:YES completion:nil];
+            //            [self presentViewController:vc animated:YES completion:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            
             NSLog(@"%@", metadataObject.stringValue);
             
         }
     }
     
-
+    
 }
 
 - (void)setupNav
 {
     self.navigationItem.title = @"扫描药品条形码";
     
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    //    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
     
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(clickLeftItem)];
-    
-    leftBtn.tintColor = [UIColor whiteColor];
-    
-    self.navigationItem.leftBarButtonItem = leftBtn;
+    //    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(clickLeftItem)];
+    //    
+    //    leftBtn.tintColor = [UIColor whiteColor];
+    //    
+    //    self.navigationItem.leftBarButtonItem = leftBtn;
 }
 
 - (void)clickLeftItem

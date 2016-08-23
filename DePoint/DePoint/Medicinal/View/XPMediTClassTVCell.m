@@ -39,7 +39,7 @@
             make.bottom.mas_equalTo(weakSelf.thirdBt.mas_top).equalTo(0);
         }];
         UIImageView *xp =[UIImageView new];
-        xp.backgroundColor = KKCOLOR(0, 104, 89, 0.8);
+        xp.backgroundColor = KKGlobalTextGreenColor;
         xp.layer.cornerRadius = 15;
         xp.clipsToBounds = YES;
         [_firstBt addSubview:xp];
@@ -73,7 +73,7 @@
             make.right.equalTo(-10);
         }];
         UIImageView *xp =[UIImageView new];
-        xp.backgroundColor = KKCOLOR(0, 104, 89, 0.8);
+        xp.backgroundColor = KKGlobalTextGreenColor;
         xp.layer.cornerRadius = 15;
         xp.clipsToBounds = YES;
         [_secondBt addSubview:xp];
@@ -104,7 +104,7 @@
             make.bottom.equalTo(-10);
         }];
         UIImageView *xp =[UIImageView new];
-        xp.backgroundColor = KKCOLOR(0, 104, 89, 0.8);
+        xp.backgroundColor = KKGlobalTextGreenColor;
         xp.layer.cornerRadius = 15;
         xp.clipsToBounds = YES;
         [_thirdBt addSubview:xp];
