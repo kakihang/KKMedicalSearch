@@ -21,7 +21,7 @@
     }];
 }
 +(id)getList:(NSInteger)page more:(NSInteger)more completionHandler:(void (^)(XPListModel *, NSError *))completionHandler{
-    NSString *path =[NSString stringWithFormat:KListPath,(long)page,more];
+    NSString *path =[NSString stringWithFormat:KListPath,(long)page,(long)more];
     return [self GET:path parameters:nil completionHandler:^(id repsonseObj, NSError *error) {
         !completionHandler ? : completionHandler([XPListModel parse:repsonseObj],error);
     }];
